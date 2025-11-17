@@ -1,0 +1,7 @@
+FROM fedora:latest
+RUN dnf install -y update
+RUN dnf install -y httpd
+CMD httpd -D foreground
+EXPOSE 80
+COPY myinfo.html /var/www/html/
+VOLUME ["/var/www/html/data"]
