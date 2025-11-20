@@ -1,0 +1,14 @@
+FROM fedora:latest AS base
+RUN dnf install -y update 
+RUN dnf install -y httpd
+RUN dnf clean all
+CMD httpd -D foreground
+EXPOSE 80
+
+FROM base AS website1
+LABEL website1=1
+COPY website1.html /var/www/html/website1.html
+
+FROM base AS website2
+LABEL website=2
+COPY website2.html /var/www/html/website2.html
