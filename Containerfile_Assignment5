@@ -1,8 +1,5 @@
 FROM fedora:latest
-RUN dnf install -y update
-RUN dnf install -y tuxpaint vim httpd
-CMD httpd -D foreground
-EXPOSE 80
+RUN dnf remove -y tuxpaint vim
 COPY data/myinfo.html /var/www/html/myinfo.html
-RUN dnf remove -y tuxpaint 
-RUN dnf remove -y vim 
+EXPOSE 80
+CMD httpd -D foreground
